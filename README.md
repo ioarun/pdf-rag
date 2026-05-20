@@ -1,2 +1,2 @@
-# pdf-rag
+# PDF RAG
 PDF RAG Chatbot
