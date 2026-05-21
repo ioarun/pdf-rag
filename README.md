@@ -1,6 +1,9 @@
 # PDF RAG
 PDF RAG Chatbot
 
+Inspired by [tonykipkemboi's code on RAG with PDFs
+](https://github.com/tonykipkemboi/ollama_pdf_rag)
+
 ## Overview
 
 This project implements a **Retrieval-Augmented Generation (RAG)** system that allows you to chat with PDF documents. The system uses advanced language models to understand and answer questions about the content of uploaded PDFs.
@@ -54,10 +57,16 @@ The notebook provides a simple `chat_with_pdf(question)` function that takes a n
    - Keep your API key private and never share it
    - Ensure you have billing set up on your OpenAI account to use the API
 
-## Docker
+## Docker build
 To build the Docker image, run the following command in the terminal from the root directory of the project:
 
 ```bash
 docker build -t rag-pdf .
+```
+
+## Run jupyter notebook in Docker container
+```bash
 docker run --gpus all --rm -it -p 8888:8888 -v $(pwd):/workspace rag-pdf
 ```
+
+
