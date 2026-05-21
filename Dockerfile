@@ -11,6 +11,10 @@ RUN apt-get update && apt-get install -y \
     python3 \
     pip 
 
+RUN apt-get update && apt-get install -y \
+    libgl1 \
+    libglib2.0-0
+
 # Install uv
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 
