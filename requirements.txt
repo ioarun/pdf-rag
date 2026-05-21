@@ -2,11 +2,13 @@ ollama
 streamlit
 pdfplumber
 pdfminer.six
-langchain==0.2.16
-langchain-core==0.2.38
-langchain_community==0.2.16
-langchain_text_splitters==0.2.4
+langchain
+langchain-core
+langchain_community
+langchain_text_splitters
 langchain-chroma
+langchain-openai
+python-dotenv
 unstructured
 unstructured[all-docs]
 onnx
@@ -17,7 +19,7 @@ numpy
 pytest
 pytest-cov
 coverage
-pydantic==2.7.4
+pydantic
 sentence-transformers
 
 # FastAPI dependencies
@@ -29,4 +31,3 @@ aiosqlite
 pydantic-settings
 
 jupyter
-
