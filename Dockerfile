@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
     curl \
     nano \
     python3 \
-    pip 
+    pip
 
 RUN apt-get update && apt-get install -y \
     libgl1 \
@@ -28,8 +28,10 @@ RUN uv pip install --system -r requirements.txt
 
 COPY . .
 
-# Expose port for Jupyter
-EXPOSE 8888
+# Expose ports
+EXPOSE 8888 8501
 
-# Run Jupyter when the container starts
-CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]
+# Default to bash shell - user can run either:
+# - Jupyter: jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root
+# - Streamlit: streamlit run app/streamlit_app.py --server.address=0.0.0.0
+CMD ["bash"]

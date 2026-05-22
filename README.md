@@ -64,9 +64,66 @@ To build the Docker image, run the following command in the terminal from the ro
 docker build -t rag-pdf .
 ```
 
-## Run jupyter notebook in Docker container
-```bash
-docker run --gpus all --rm -it -p 8888:8888 -v $(pwd):/workspace rag-pdf
-```
+## Running with Docker
 
+### Run Streamlit App
+```bash
+docker run --rm -it -p 8888:8888 -p 8501:8501 -v $(pwd):/workspace rag-pdf bash -c "streamlit run app/streamlit_app.py --server.address=0.0.0.0"
+```
+Access at: **http://localhost:8501**
+
+### Run Jupyter Notebook in Docker
+```bash
+docker run --rm -it -p 8888:8888 -p 8501:8501 -v $(pwd):/workspace rag-pdf bash -c "jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root"
+```
+Access at: **http://localhost:8888** (copy token from logs)
+
+### Interactive Shell (Choose App Later)
+```bash
+docker run --rm -it -p 8888:8888 -p 8501:8501 -v $(pwd):/workspace rag-pdf
+```
+Then run inside container:
+- **Streamlit:** `streamlit run app/streamlit_app.py --server.address=0.0.0.0`
+- **Jupyter:** `jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root`
+
+**Port Mappings:**
+- `8888` - Jupyter Notebook
+- `8501` - Streamlit App
+
+
+## Running the Application
+
+### Option 1: Jupyter Notebook (Recommended for Development)
+The notebook provides an interactive environment for exploring RAG capabilities with detailed output.
+
+1. **Run Jupyter:**
+   ```bash
+   jupyter notebook
+   ```
+
+2. **Open and run:**
+   - Navigate to `notebooks/rag_notebook.ipynb`
+   - Place your PDF in `/workspace/pdfs/` or update the path in the notebook
+   - Run the cells sequentially to process the PDF and chat with it
+
+### Option 2: Streamlit Web Application (Recommended for Users)
+The Streamlit app provides a user-friendly web interface for uploading PDFs and chatting with them.
+
+1. **Run the Streamlit app:**
+   ```bash
+   streamlit run app/streamlit_app.py
+   ```
+
+2. **Use the app:**
+   - Upload a PDF using the sidebar
+   - Ask questions about the document in the chat
+   - View retrieved context chunks for transparency
+   - Adjust model and temperature settings in the sidebar
+
+**Features:**
+- 📤 Dynamic PDF upload and processing
+- 💬 Multi-turn chat interface
+- 📚 View retrieved context chunks
+- ⚙️ Adjustable model and temperature settings
+- 💾 Chat history within session
 

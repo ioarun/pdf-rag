@@ -9,6 +9,10 @@ langchain_text_splitters
 langchain-chroma
 langchain-openai
 python-dotenv
+streamlit
+unstructured
+pdf2image
+pillow
 unstructured
 unstructured[all-docs]
 onnx
